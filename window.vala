@@ -20,6 +20,11 @@ class calculator_window : Window
 	private Button equals;
 	private Entry display;
 
+	private int64 first_number;
+	private int64 second_number;
+	private int64 result;
+	private char operation;
+
 	public calculator_window()
 	{
 		title = "calculator";
@@ -41,7 +46,6 @@ class calculator_window : Window
 	
 	private void set_up_buttons()
 	{
-
 		zero	= new Button.with_label("0");
 		one	= new Button.with_label("1");
 		two	= new Button.with_label("2");
@@ -85,6 +89,122 @@ class calculator_window : Window
 
 	private void connect_signals()
 	{
-		;
+		zero.clicked.connect(()=>
+		{
+			display.text+="0";
+		}
+		);
+
+		one.clicked.connect(()=>
+		{
+			display.text+="1";
+		}
+		);
+
+		two.clicked.connect(()=>
+		{
+			display.text+="2";
+		}
+		);
+
+		three.clicked.connect(()=>
+		{
+			display.text+="3";
+		}
+		);
+
+		four.clicked.connect(()=>
+		{
+			display.text+="4";
+		}
+		);
+
+		five.clicked.connect(()=>
+		{
+			display.text+="5";
+		}
+		);
+
+		six.clicked.connect(()=>
+		{
+			display.text+="6";
+		}
+		);
+
+		seven.clicked.connect(()=>
+		{
+			display.text+="7";
+		}
+		);
+
+		eight.clicked.connect(()=>
+		{
+			display.text+="8";
+		}
+		);
+
+		nine.clicked.connect(()=>
+		{
+			display.text+="9";
+		}
+		);
+
+		plus.clicked.connect(()=>
+		{
+			operation = '+';
+			this.first_number = display.text.to_int();
+			display.text = "";
+		}
+		);
+
+		subtract.clicked.connect(()=>
+		{
+			operation = '-';
+			this.first_number = display.text.to_int();
+			display.text = "";
+		}
+		);
+
+		times.clicked.connect(()=>
+		{
+			operation = '*';
+			this.first_number = display.text.to_int();
+			display.text = "";
+		}
+		);
+
+		divide.clicked.connect(()=>
+		{
+			operation = '/';
+			this.first_number = display.text.to_int();
+			display.text = "";
+		}
+		);
+
+		equals.clicked.connect(()=>
+		{
+			this.second_number = display.text.to_int();
+			switch(operation)
+			{
+				case '+':
+				     this.result = first_number + second_number;
+				     display.text = this.result.to_string();
+				     break;
+				case '-':
+				     this.result = first_number - second_number;
+				     display.text = this.result.to_string();
+				     break;
+				case '*':
+				     this.result = first_number * second_number;
+				     display.text = this.result.to_string();
+				     break;
+				case '/':
+				     this.result = first_number / second_number;
+				     display.text = this.result.to_string();
+				     break;
+			}
+		}
+		);
+
 	}
 }
