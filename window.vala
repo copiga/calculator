@@ -18,7 +18,7 @@ class calculator_window : Window
 	private Button times;
 	private Button divide;
 	private Button equals;
-	private Entry display;
+	private Entry display;					//calculator display, where things are shown
 
 	private int64 first_number;
 	private int64 second_number;
@@ -39,8 +39,8 @@ class calculator_window : Window
 	private void set_up_grid()
 	{
 		grid = new Grid();
-		grid.set_column_homogeneous(true);
-		grid.set_row_homogeneous(true);
+		grid.set_column_homogeneous(true);		//keep constraints when resizing 
+		grid.set_row_homogeneous(true);			//keep constraints when resizing
 		this.add(grid);
 	}
 	
@@ -152,7 +152,7 @@ class calculator_window : Window
 		plus.clicked.connect(()=>
 		{
 			operation = '+';
-			this.first_number = display.text.to_int();
+			this.first_number = display.text.to_int64();
 			display.text = "";
 		}
 		);
@@ -160,7 +160,7 @@ class calculator_window : Window
 		subtract.clicked.connect(()=>
 		{
 			operation = '-';
-			this.first_number = display.text.to_int();
+			this.first_number = display.text.to_int64();
 			display.text = "";
 		}
 		);
@@ -168,7 +168,7 @@ class calculator_window : Window
 		times.clicked.connect(()=>
 		{
 			operation = '*';
-			this.first_number = display.text.to_int();
+			this.first_number = display.text.to_int64();
 			display.text = "";
 		}
 		);
@@ -176,14 +176,14 @@ class calculator_window : Window
 		divide.clicked.connect(()=>
 		{
 			operation = '/';
-			this.first_number = display.text.to_int();
+			this.first_number = display.text.to_int64();
 			display.text = "";
 		}
 		);
 
 		equals.clicked.connect(()=>
 		{
-			this.second_number = display.text.to_int();
+			this.second_number = display.text.to_int64();
 			switch(operation)
 			{
 				case '+':
